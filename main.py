@@ -2,6 +2,8 @@ import discord
 import os
 import countInfo
 
+import art
+
 
 from keepAlive import keepAlive
 
@@ -60,7 +62,27 @@ async def on_message(message):
 	elif message.content.lower().startswith("!wordcount"):
 		async with message.channel.typing():
 			await message.reply(await countInfo.get_wordCount(message.content[11:],client, message),mention_author=True)
-	
+
+
+  #Not relevant to main function
+  
+	elif message.content.lower().startswith("!art"):
+		async with message.channel.typing():
+			await message.channel.send("```\n" + art.text2art(message.content[5:]) + "\n```")
+
+	elif message.content.lower().startswith("!github"):
+		async with message.channel.typing():
+			await message.channel.send("https://github.com/591291-hvl/dpsharkBot")
+
+	elif (client.user.mentioned_in(message) or "<@" in message.content):
+		async with message.channel.typing():
+			await message.add_reaction("<:blobping:917804967350399059>")
+
+	elif "pog" in message.content.lower():
+		async with message.channel.typing():
+			await message.add_reaction("<:pog:917817711982182570")
+  
+      
 	else:
 		print("nothing")
 

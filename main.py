@@ -21,8 +21,10 @@ async def on_ready():
 #Text responses
 @client.event
 async def on_message(message):
-	if message.author == client.user or not message.author.id == 223112835671130112:
+	if message.author == client.user:
 		return
+#if message.author == client.user or not message.author.id == 223112835671130112:
+#	return
 
 	elif message.content.lower().startswith(".test"):
 		await message.channel.send("I work")
